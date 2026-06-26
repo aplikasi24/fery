@@ -3,39 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi SDN Keleng 02</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 p-5">
-
-    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6">
-        <h1 class="text-xl font-bold mb-4">Dashboard Data</h1>
-        
-        <div id="loader" class="text-blue-500">Memuat data...</div>
-        
-        <div id="app" class="hidden">
-            <p id="hasil" class="text-gray-700"></p>
-        </div>
-    </div>
-
-    <script>
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbxQ0jnXozHgj8-cQCFj8fiwRBfEbahZobcGV793rS7tTuWaUdjsWInQ5D233S4p-ybN/exec';
-
-        // Fungsi fetch data dengan handling error
-        async function ambilData() {
-            try {
-                const response = await fetch(scriptUrl);
-                const data = await response.json();
-                
-                document.getElementById('loader').classList.add('hidden');
-                document.getElementById('app').classList.remove('hidden');
-                document.getElementById('hasil').innerText = data.message;
-            } catch (error) {
-                document.getElementById('loader').innerText = "Gagal memuat data.";
-            }
+    <title>Sistem Data Pekerjaan KBLI</title>
+    
+    <!-- Meta tags untuk SEO -->
+    <meta name="description" content="Sistem Manajemen Data Pekerjaan KBLI BPS">
+    
+    <!-- Styling agar iframe membentang penuh 100% menutupi layar -->
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Mencegah scroll ganda dari body */
+            background-color: #f3f4f6; /* Warna abu-abu seragam dengan aplikasi asli */
         }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
 
-        window.onload = ambilData;
-    </script>
+    <!-- 
+      Iframe ini memanggil aplikasi Google Apps Script Anda 
+      seolah-olah sedang berjalan di website ini secara native.
+    -->
+    <iframe 
+        src="https://script.google.com/macros/s/AKfycbyhFXR-oFnUyaMnlHUZ91zjBy0OWmdTymKxUbXdCT-RbGaxmX-TQkXFg5wLPd4kwjXI/exec" 
+        title="Aplikasi Data Pekerjaan KBLI"
+        allowfullscreen="true">
+    </iframe>
+
 </body>
 </html>
