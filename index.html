@@ -1,0 +1,11 @@
+<script>
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbxQ0jnXozHgj8-cQCFj8fiwRBfEbahZobcGV793rS7tTuWaUdjsWInQ5D233S4p-ybN/exec';
+
+  async function getData() {
+    const response = await fetch(scriptUrl);
+    const data = await response.json();
+    console.log(data);
+  }
+  
+  getData();
+</script>
